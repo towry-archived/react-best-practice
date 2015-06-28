@@ -1,0 +1,27 @@
+{
+  "name": "webpackDevServer-starter",
+  "version": "0.1.0",
+  "description": "/dev/null",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "react",
+    "router"
+  ],
+  "author": "Towry Wang",
+  "license": "MIT",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "react": "^0.13.2",
+    "webpack": "^1.8.4",
+    "webpack-dev-server": "^1.8.0",
+    "react-hot-loader": "^1.1.5",
+    "babel-runtime": "^5.1.10",
+    "babel-core": "^5.4.5",
+    "babel-loader": "^5.0.0"
+  }
+}
