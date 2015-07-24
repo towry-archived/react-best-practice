@@ -93,6 +93,8 @@ var Dispatcher = (function () {
     this.pending = {};
     this.isDispatching = true;
 
+    var result;
+
     try {
       for (var i in this.callbacks) {
         if (this.pending[i]) {
@@ -100,13 +102,15 @@ var Dispatcher = (function () {
         }
 
         this.pending[i] = true;
-        this.callbacks[i](this._pendingPayload);
+        result = this.callbacks[i](this._pendingPayload);
         this._handled[i] = true;
       }
     } finally {
       this._pendingPayload = null;
       this.isDispatching = false;
     }
+
+    return result;
   }
 
   return function (spec) {

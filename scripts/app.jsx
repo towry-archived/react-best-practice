@@ -2,9 +2,7 @@ var React = require('react');
 var Line = require('./line.jsx');
 var Notes = require('./notes.js');
 
-var Dispatcher = require('./dispatcher.js');
-
-var notes = Notes.get();
+var notes;
 
 var App = React.createClass({
   getInitialState: function () {
@@ -19,14 +17,15 @@ var App = React.createClass({
     })
   },
 
-  componentWillUpdate: function () {
-    notes = Notes.get();
-    console.log(notes);
+  componentDidMount: function () {
+    var self = this;
   },
 
   getLines: function () {
     var views = [];
     var self = this;
+    notes = Notes.get();
+    
     notes.forEach(function(n, i) {
       var key = 'note-' + i;
       views.push(<Line up={self._update} text={n.text} key={key} index={i} />);

@@ -3,9 +3,9 @@ var React = require('react');
 var Note = require('./note.jsx');
 var Form = require('./note_form.jsx');
 
-var Notes = require('./notes.js');
-
 var Action = require('./action.js');
+
+var Dispatcher = require('./dispatcher.js');
 
 var Line = React.createClass({
   getInitialState: function () {
@@ -16,22 +16,17 @@ var Line = React.createClass({
   },
 
   onClick: function (e) {
-    var notes = Notes.get();
-    if (notes[this.props.index].notes && notes[this.props.index].notes[notes[this.props.index].notes.length - 1] === '') {
+    var a = Dispatcher.dispatch({
+      action: 'add-form',
+      index: this.props.index
+    })
+
+    // if action false, don't update the app
+    if (!a) {
       return;
-    } else {
-      Notes.put(this.props.index, {notes: ['']})
     }
 
-    this.setState({
-      action: 'ADD_FORM',
-    })
-
     this.props.up && this.props.up();
-
-    this.setState({
-      action: ''
-    })
   },
 
   shouldComponentUpdate: function (props, state) {
