@@ -54,7 +54,7 @@ var Dispatcher = (function () {
   }
 
   Dispatcher.prototype.waitFor = function (ids) {
-    if (this.isDispatching) {
+    if (!this.isDispatching) {
       throw new Error("Can not call waitFor before the start of dispatching");
     }
 
